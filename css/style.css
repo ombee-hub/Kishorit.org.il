@@ -117,7 +117,7 @@ a:focus-visible, button:focus-visible {
 .logo { display: flex; align-items: center; flex-shrink: 0; }
 .logo img { display: block; height: 72px; width: auto; }
 .nav { display: flex; gap: 2px; flex-wrap: wrap; }
-.nav a {
+.nav a:not(.btn) {
   font-weight: 600;
   font-size: 15px;
   color: var(--ink-soft);
@@ -125,7 +125,7 @@ a:focus-visible, button:focus-visible {
   border-radius: 999px;
   transition: color 0.15s, background 0.15s;
 }
-.nav a:hover { color: var(--pine); background: var(--leaf-soft); }
+.nav a:not(.btn):hover { color: var(--pine); background: var(--leaf-soft); }
 .nav a.active { color: var(--pine); background: var(--leaf-soft); }
 
 .btn {
@@ -195,8 +195,8 @@ a:focus-visible, button:focus-visible {
     border-top: 2px solid var(--leaf-soft);
   }
   .nav-actions .btn { text-align: center; border-bottom: none; }
-  .nav-actions .btn-accent { color: #fff; font-size: 16.5px; padding: 13px; }
-  .nav-actions .btn-accent:hover { color: #fff; background: var(--accent-deep); }
+  .nav-actions .btn-accent { color: #fff !important; font-size: 16.5px; padding: 13px; }
+  .nav-actions .btn-accent:hover { color: #fff !important; background: var(--accent-deep); }
   .nav-lang { display: flex; gap: 8px; }
   .nav-lang a {
     flex: 1;
@@ -233,13 +233,13 @@ a:focus-visible, button:focus-visible {
   body.nav-open .nav { clip-path: inset(0 0 0 0); visibility: visible; }
   body.nav-open .nav-backdrop { opacity: 1; pointer-events: auto; }
   body.nav-open { overflow: hidden; }
-  .nav a {
+  .nav a:not(.btn) {
     font-size: 17px;
     padding: 13px 12px;
     border-radius: 10px;
     border-bottom: 1px solid var(--leaf-soft);
   }
-  .nav a:last-of-type { border-bottom: none; }
+  .nav a:not(.btn):last-of-type { border-bottom: none; }
   .nav-head {
     display: flex;
     align-items: center;
