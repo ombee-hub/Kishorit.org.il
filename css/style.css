@@ -143,6 +143,89 @@ a:focus-visible, button:focus-visible {
 .btn-light { background: #fff; color: var(--accent); }
 .btn-light:hover { background: var(--wheat); color: var(--pine-deep); }
 .topbar .btn { padding: 9px 20px; font-size: 15px; flex-shrink: 0; }
+/* ---------- mobile nav (hamburger + side drawer) ---------- */
+.nav-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  background: none;
+  color: var(--pine);
+  place-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.15s;
+}
+.nav-toggle:hover { border-color: var(--leaf); }
+.nav-head { display: none; }
+.nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(36, 52, 44, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+  z-index: 98;
+}
+
+@media (max-width: 1080px) {
+  .topbar .nav-toggle { display: grid; }
+  .nav {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: min(330px, 86vw);
+    background: var(--card);
+    z-index: 99;
+    flex-direction: column;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    gap: 2px;
+    margin: 0;
+    padding: 16px 18px 28px;
+    overflow-y: auto;
+    box-shadow: 0 0 44px rgba(0, 0, 0, 0.22);
+    transition: transform 0.3s ease;
+  }
+  html[dir="rtl"] .nav { right: 0; transform: translateX(105%); }
+  html[dir="ltr"] .nav { left: 0; transform: translateX(-105%); }
+  body.nav-open .nav { transform: none; }
+  body.nav-open .nav-backdrop { opacity: 1; pointer-events: auto; }
+  body.nav-open { overflow: hidden; }
+  .nav a {
+    font-size: 17px;
+    padding: 13px 12px;
+    border-radius: 10px;
+    border-bottom: 1px solid var(--leaf-soft);
+  }
+  .nav a:last-of-type { border-bottom: none; }
+  .nav-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 12px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--leaf-soft);
+  }
+  .nav-head b { font-size: 18px; font-weight: 800; color: var(--pine); }
+  .nav-close {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: none;
+    color: var(--pine);
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+  }
+  .nav-close:hover { background: var(--leaf-soft); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav, .nav-backdrop { transition: none; }
+}
+
 /* ---------- language switcher ---------- */
 .lang-menu { position: relative; flex-shrink: 0; margin-inline-start: auto; }
 .lang-btn {

@@ -21,7 +21,11 @@
     <a class="logo" href="index.html" aria-label="כישורית — עמוד הבית">
       <img src="logo/kishorit-logo-300px.png" alt="כישורית KISHORIT">
     </a>
-    <nav class="nav" aria-label="ניווט ראשי">
+    <nav class="nav" id="mainnav" aria-label="ניווט ראשי">
+      <div class="nav-head">
+        <b>תפריט</b>
+        <button class="nav-close" type="button" aria-label="סגירת תפריט"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14"/><path d="M19 5 5 19"/></svg></button>
+      </div>
       <a href="founding.html">תולדות כישורית</a>
       <a href="approach.html">תפיסת העולם</a>
       <a href="work.html">מקומות עבודה</a>
@@ -42,8 +46,10 @@
       </div>
     </div>
     <a class="btn btn-accent" href="donate.html">תרמו לנו</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="פתיחת תפריט"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg></button>
   </div>
 </header>
+<div class="nav-backdrop" aria-hidden="true"></div>
 
 <section class="hero">
   <div class="wrap">

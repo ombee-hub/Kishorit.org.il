@@ -1,3 +1,33 @@
+var navToggle = document.querySelector('.nav-toggle');
+var mainNav = document.querySelector('.topbar .nav');
+var navBackdrop = document.querySelector('.nav-backdrop');
+
+function closeNav() {
+  document.body.classList.remove('nav-open');
+  if (navToggle) { navToggle.setAttribute('aria-expanded', 'false'); }
+}
+
+if (navToggle && mainNav) {
+  navToggle.addEventListener('click', function () {
+    var open = document.body.classList.toggle('nav-open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  var navCloseBtn = mainNav.querySelector('.nav-close');
+  if (navCloseBtn) { navCloseBtn.addEventListener('click', closeNav); }
+  if (navBackdrop) { navBackdrop.addEventListener('click', closeNav); }
+  mainNav.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', closeNav);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { closeNav(); }
+  });
+  // חזרה לרוחב מחשב סוגרת את המגירה אוטומטית
+  var desktopMq = window.matchMedia('(min-width: 1081px)');
+  var onDesktop = function (e) { if (e.matches) { closeNav(); } };
+  if (desktopMq.addEventListener) { desktopMq.addEventListener('change', onDesktop); }
+  else if (desktopMq.addListener) { desktopMq.addListener(onDesktop); }
+}
+
 document.querySelectorAll('.lang-menu').forEach(function (menu) {
   var btn = menu.querySelector('.lang-btn');
   btn.addEventListener('click', function (e) {
