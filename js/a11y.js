@@ -88,10 +88,12 @@
     html += '<button class="a11y-tile" type="button" data-cls="' + f.cls + '" aria-pressed="' + on + '">' +
       f.svg + '<span>' + (lang === 'en' ? f.en : f.he) + '</span></button>';
   });
+  var statementIcon = icon('<circle cx="12" cy="5" r="1.8"/><path d="M12 8c-2.6 0-4.8-.4-6.5-.9l-.5 1.8c1.6.5 3.3.8 5 1v2.8l-2 6.5 1.8.6 2-6h.4l2 6 1.8-.6-2-6.5V9.9c1.7-.2 3.4-.5 5-1l-.5-1.8C16.8 7.6 14.6 8 12 8Z"/>');
+  var privacyIcon = icon('<path d="M12 3 5 6v5c0 4.5 3 8.2 7 9.5 4-1.3 7-5 7-9.5V6Z"/><path d="m9 12 2 2 4-4"/>');
   html += '</div><button class="a11y-reset" type="button">' + T.reset + '</button>' +
     '<div class="a11y-links">' +
-    '<a href="accessibility.html">' + T.statement + '</a>' +
-    '<a href="privacy.html">' + T.privacy + '</a>' +
+    '<a href="accessibility.html">' + statementIcon + '<span>' + T.statement + '</span></a>' +
+    '<a href="privacy.html">' + privacyIcon + '<span>' + T.privacy + '</span></a>' +
     '</div>';
   panel.innerHTML = html;
 
