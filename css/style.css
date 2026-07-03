@@ -170,6 +170,13 @@ a:focus-visible, button:focus-visible {
 }
 
 @media (max-width: 1080px) {
+  /* backdrop-filter על ההדר כולא בתוכו אלמנטים ב-position:fixed —
+     במובייל מבטלים אותו כדי שמגירת הצד תתפרש על כל גובה החלון */
+  .topbar {
+    backdrop-filter: none;
+    background: var(--daylight);
+  }
+  .nav-backdrop { z-index: 49; }
   .topbar .nav-toggle { display: grid; }
   .nav {
     position: fixed;
