@@ -39,7 +39,7 @@
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
-html, body { overflow-x: clip; }
+html, body { overflow-x: hidden; overflow-x: clip; }
 
 body {
   margin: 0;
@@ -198,11 +198,13 @@ a:focus-visible, button:focus-visible {
     overflow-y: auto;
     box-shadow: 0 0 44px rgba(0, 0, 0, 0.22);
     visibility: hidden;
-    transition: transform 0.3s ease, visibility 0.3s;
+    /* הסתרה ב-clip-path במקום הזזה אל מחוץ למסך —
+       לא יוצרת גלישה אופקית באף דפדפן */
+    transition: clip-path 0.3s ease, visibility 0.3s;
   }
-  html[dir="rtl"] .nav { right: 0; transform: translateX(105%); }
-  html[dir="ltr"] .nav { left: 0; transform: translateX(-105%); }
-  body.nav-open .nav { transform: none; visibility: visible; }
+  html[dir="rtl"] .nav { right: 0; clip-path: inset(0 0 0 100%); }
+  html[dir="ltr"] .nav { left: 0; clip-path: inset(0 100% 0 0); }
+  body.nav-open .nav { clip-path: inset(0 0 0 0); visibility: visible; }
   body.nav-open .nav-backdrop { opacity: 1; pointer-events: auto; }
   body.nav-open { overflow: hidden; }
   .nav a {
