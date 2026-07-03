@@ -1,0 +1,165 @@
+/* =========================================================
+   כישורית — ווידג'ט נגישות
+   ========================================================= */
+
+/* ---------- כפתור צף ---------- */
+.a11y-fab {
+  position: fixed;
+  bottom: 18px;
+  left: 18px;
+  z-index: 200;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--leaf, #4a6758);
+  color: #fff;
+  border: 2px solid #fff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.a11y-fab:hover { background: var(--accent-deep, #37503f); }
+
+/* ---------- פאנל ---------- */
+.a11y-panel {
+  position: fixed;
+  bottom: 84px;
+  left: 18px;
+  z-index: 201;
+  width: min(320px, calc(100vw - 36px));
+  max-height: calc(100dvh - 110px);
+  overflow-y: auto;
+  background: #eef0ec;
+  border-radius: 16px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  padding: 14px;
+  display: none;
+}
+body.a11y-open .a11y-panel { display: block; }
+
+.a11y-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.a11y-head b { font-size: 17px; color: var(--pine, #33483e); }
+.a11y-close {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  color: var(--pine, #33483e);
+}
+.a11y-close:hover { background: var(--leaf-soft, #e2e8e4); }
+
+.a11y-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.a11y-tile {
+  background: #fff;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 14px 8px 12px;
+  display: grid;
+  gap: 8px;
+  place-items: center;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 13.5px;
+  line-height: 1.3;
+  color: #26302a;
+  cursor: pointer;
+  text-align: center;
+}
+.a11y-tile:hover { border-color: var(--leaf, #4a6758); }
+.a11y-tile[aria-pressed="true"] {
+  border-color: var(--leaf, #4a6758);
+  background: var(--leaf-soft, #e2e8e4);
+}
+.a11y-tile svg { width: 26px; height: 26px; }
+
+.a11y-reset {
+  margin-top: 12px;
+  width: 100%;
+  background: var(--leaf, #4a6758);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+}
+.a11y-reset:hover { background: var(--accent-deep, #37503f); }
+
+.a11y-links {
+  margin-top: 12px;
+  display: grid;
+  gap: 7px;
+  text-align: center;
+  font-size: 14px;
+}
+.a11y-links a {
+  color: var(--pine, #33483e);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* =========================================================
+   אפקטים — מופעלים כמחלקות על <html>
+   ========================================================= */
+
+html.a11y-contrast { filter: contrast(1.35); }
+html.a11y-grayscale { filter: grayscale(1); }
+html.a11y-invert { filter: invert(1) hue-rotate(180deg); }
+html.a11y-invert img,
+html.a11y-invert video,
+html.a11y-invert iframe { filter: invert(1) hue-rotate(180deg); }
+
+html.a11y-bigtext body { zoom: 1.2; }
+
+html.a11y-spacing body { letter-spacing: 0.12em; word-spacing: 0.18em; }
+
+html.a11y-lineheight body,
+html.a11y-lineheight body * { line-height: 2.1 !important; }
+
+html.a11y-links body a {
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+}
+
+html.a11y-noanim *,
+html.a11y-noanim *::before,
+html.a11y-noanim *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+html.a11y-noanim .reveal { opacity: 1 !important; transform: none !important; }
+
+html.a11y-noimg body img,
+html.a11y-noimg .hills,
+html.a11y-noimg .leafbg,
+html.a11y-noimg .product .ph { visibility: hidden !important; }
+html.a11y-noimg .a11y-panel img,
+html.a11y-noimg .topbar .logo img { visibility: visible !important; }
+
+html.a11y-readable body,
+html.a11y-readable body * { font-family: Arial, Helvetica, sans-serif !important; }
+
+html.a11y-cursor,
+html.a11y-cursor * {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='44' height='44'><path d='M7 3l29 17-13 3 8 15-7 3-7-15-10 10z' fill='%2326302a' stroke='white' stroke-width='2.5'/></svg>") 4 4, auto !important;
+}
